@@ -23,7 +23,7 @@ class Register extends React.Component {
   }
 
   onSubmitRegister = () => {
-    fetch('http://localhost:5000/register/onSite', {
+    fetch('https://fierce-bastion-22088.herokuapp.com/register/onSite', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -34,9 +34,10 @@ class Register extends React.Component {
     })
       .then(response => response.json())
       .then(user => {
+        console.log(user.id);
           if (user.id) {
-            const profileUrl = 'http://localhost:3000/profile/' + user.id;
-            window.location.replace(profileUrl);
+            const profileUrl = '/profile/' + user.id;
+            window.location.pathname = profileUrl;
           } else {
             const passDiv = document.getElementById('password');
             const error = document.createElement('p');
@@ -48,7 +49,7 @@ class Register extends React.Component {
   }
 
   onGoogleRegister =() =>{
-    fetch('http://localhost:5000/googleAuth/register')
+    fetch('https://fierce-bastion-22088.herokuapp.com/googleAuth/register')
     .then(res => res.json())
     .then(data => {
       console.log(data.url);
@@ -62,7 +63,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <form className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white">
+      <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white">
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -117,7 +118,7 @@ class Register extends React.Component {
             </div>
           </div>
         </main>
-      </form>
+      </article>
     );
   }
 }

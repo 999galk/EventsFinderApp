@@ -18,7 +18,7 @@ class SignIn extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:5000/signin', {
+    fetch('https://fierce-bastion-22088.herokuapp.com/signin', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -29,8 +29,8 @@ class SignIn extends React.Component {
       .then(response => response.json())
       .then(user => {
         if (user.id) {
-          const profileUrl = 'http://localhost:3000/profile/' + user.id;
-          window.location.replace(profileUrl);
+          const profileUrl = '/profile/' + user.id;
+          window.location.pathname = profileUrl;
         } else { 
           const passDiv = document.getElementById('password');
           if(!document.getElementById('errorMsg')){
@@ -45,7 +45,7 @@ class SignIn extends React.Component {
   }
 
   onGoogleClick = () => {
-    fetch('http://localhost:5000/googleAuth/login')
+    fetch('https://fierce-bastion-22088.herokuapp.com/googleAuth/login')
     .then(res => res.json())
     .then(data => {
       console.log(data.url);
@@ -61,7 +61,7 @@ class SignIn extends React.Component {
     const { onRouteChange } = this.props;
     return (
       <div className="mainBg">
-      <form className="br3 ba b--black-10 bg-white mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+      <article className="br3 ba b--black-10 bg-white mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -112,7 +112,7 @@ class SignIn extends React.Component {
             </div>
           </div>
         </main>
-      </form>
+      </article>
       </div>
     );
   }

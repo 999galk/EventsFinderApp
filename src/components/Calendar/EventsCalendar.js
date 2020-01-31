@@ -21,7 +21,7 @@ class EventsCalendar extends React.Component{
 
 	SaveSearch = () => {
 		const data = (this.state.events).filter(event => event.id === this.state.eventId);
-		fetch('http://localhost:5000/saveSearch', {
+		fetch('https://fierce-bastion-22088.herokuapp.com/saveSearch', {
 	      method: 'post',
 	      headers: {'Content-Type': 'application/json'},
 	      body: JSON.stringify({
@@ -48,7 +48,7 @@ class EventsCalendar extends React.Component{
 	}
 
 	getEvents= () => {
-		const fetchUrl = 'http://localhost:5000/calendar/' + this.props.countryCode + '/' + this.props.city;
+		const fetchUrl = 'https://fierce-bastion-22088.herokuapp.com/calendar/' + this.props.countryCode + '/' + this.props.city;
 		fetch(fetchUrl)
 		.then(res => res.json())
 		.then(data => {

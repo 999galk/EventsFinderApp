@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
 	}
 
 	getCitiesOfCountry = () => {
-		fetch('http://localhost:5000/cities', {
+		fetch('https://fierce-bastion-22088.herokuapp.com/cities', {
 	      method: 'post',
 	      headers: {'Content-Type': 'application/json'},
 	      body: JSON.stringify({
