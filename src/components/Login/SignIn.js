@@ -49,7 +49,7 @@ class SignIn extends React.Component {
     .then(res => res.json())
     .then(data => {
       console.log(data.url);
-      //window.location.replace(data.url);
+      window.location.replace(data.url);
     });
   }
 
