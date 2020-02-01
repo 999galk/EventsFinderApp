@@ -43,13 +43,13 @@ class SignIn extends React.Component {
         }
       })
   }
-
+ 
   onGoogleClick = () => {
     fetch('https://fierce-bastion-22088.herokuapp.com/googleAuth/login')
     .then(res => res.json())
     .then(data => {
       console.log(data.url);
-      window.location.replace(data.url);
+      //window.location.replace(data.url);
     });
   }
 
