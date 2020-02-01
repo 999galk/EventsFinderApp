@@ -10,7 +10,7 @@ const initialState = {
 	cityList : [],
 	period : '',
 	calChanged : false,
-	supportedCountryCode : ["US", "AU", "AT", "BE", "CA", "DK", "FI", "FR", "DE", "GB", "IE", "LU", "MX", "NL", "NZ", "NO", "PL", "PT", "ES", "SE", "CH", "AE"]
+	supportedCountryCode : ["US", "AT", "BE", "CA", "DK", "FI", "GB", "IE", "LU", "MX", "NL", "NZ", "NO", "ES", "SE", "CH", "AE"]
 }
 
 class SearchBar extends React.Component {

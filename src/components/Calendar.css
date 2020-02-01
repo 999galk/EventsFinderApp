@@ -24,3 +24,6 @@
 .eventDetails{
   background-color: black;
 }
+.rbc-calendar{
+  z-index:99;
+}

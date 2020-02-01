@@ -122,9 +122,9 @@ class EventsCalendar extends React.Component{
 		const {events, eventImg, eventLink, eventTitle, eventClicked} = this.state;
 		const {isSignedIn} = this.props;
 		return(
-			<div id='calendar' className='pa2 pb5 ma2 shadow-5'>
+			<div id='calendar' className='pa2 ma2 shadow-5'>
 				<h1>
-					{`Upcoming Events for ${this.props.city}:`}
+					{`Upcoming Events for ${this.props.city}, ${this.props.countryCode}:`}
 				</h1>
 			    <Calendar
 			      localizer={localizer}

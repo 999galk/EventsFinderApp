@@ -54,10 +54,10 @@ class App extends React.Component{
   render () {
     const {route, isSignedIn, userId, city, countryCode, calChanged } = this.state;
     return (
-      <div className="App">
+      <div className="App" style={{display:'flex', flexDirection:'column',justifyContent:'space-between'}}>
         <Nav onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
         {route ==='/home'
-          ?<div className='pb5'>
+          ?<div>
           <Header onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} userId={userId} onSearchChange={this.onSearchChange} calChanged={calChanged}/>
           {
             calChanged

@@ -13,7 +13,7 @@ const EventDetails = ({ eventImg, eventLink, eventTitle, eventClicked, SaveSearc
 					<button className='mt1 white b pv2 ph3 bg-gray bn br-pill pointer' onClick={SaveSearch} title="Add this event to my Google Calendar">+ Google Calendar</button>
 				</div>
 				: ( eventClicked
-					? <div>*Log in to add events to your Google Calendar!</div>
+					? <div>*Sign in to add events to your Google Calendar!</div>
 					:<div></div>
 				)
 			}

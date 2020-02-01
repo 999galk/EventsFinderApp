@@ -108,7 +108,7 @@ class SignIn extends React.Component {
             </div>
             <div className="lh-copy mt2">
               <h4 className='mb1'> Don't have an account yet?</h4>
-              <p  onClick={() => onRouteChange('/register')} className="f5 ma1 w4 link dim black db pointer shadow-4" style={{marginLeft : 'auto', marginRight:'auto'}}>Register Now!</p>
+              <p  onClick={() => onRouteChange('/register')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mt2" style={{marginLeft : 'auto', marginRight:'auto'}}>Register Now!</p>
             </div>
           </div>
         </main>
