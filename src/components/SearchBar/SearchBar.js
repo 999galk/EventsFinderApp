@@ -1,7 +1,8 @@
 import React from 'react';
 import { CountryDropdown } from 'react-country-region-selector';
 import { getCode } from 'country-list';
-
+import { mainCities } from '../MainCities';
+import './SearchBar.css';
 
 const initialState = {
 	country : '',
@@ -20,8 +21,15 @@ class SearchBar extends React.Component {
 	}
 
 	onCountryChange (val) {
-	    this.props.onSearchChange(false, '', '');
-	    this.setState({ country: val },this.getCountryCode);
+		const select = document.getElementById('citySelector');
+		const ifClean = new Promise((resolve,reject) => {
+			console.log('got into promise');
+			resolve(this.removeCities(select));
+		});
+		ifClean.then(value => {
+			console.log('starting then after promise');
+	    	this.setState({ country: val },this.getCountryCode);
+		})
 	}
 
 
@@ -37,17 +45,9 @@ class SearchBar extends React.Component {
 	}
 
 	getCitiesOfCountry = () => {
-		fetch('https://fierce-bastion-22088.herokuapp.com/cities', {
-	      method: 'post',
-	      headers: {'Content-Type': 'application/json'},
-	      body: JSON.stringify({
-	        code: this.state.countryCode
-	      })
-	    })
-	    .then(res => res.json())
-	    .then(data => {
-	    	this.setState({cityList : data}, this.updateCityOptions);
-	    })
+		const obj = mainCities.filter(country => country.countryCode === this.state.countryCode);
+		console.log('obj.cities from cities file:', obj[0].cities);
+		this.setState({cityList : obj[0].cities}, this.updateCityOptions);
 	}
 
 	updateCityOptions = () => {
@@ -67,15 +67,24 @@ class SearchBar extends React.Component {
 	onCityChange = () => {
 		const select = document.getElementById('citySelector');
 		const val = select.value;
-	    this.props.onSearchChange(true, val, this.state.countryCode);
-		this.setState(initialState);
-		this.removeCities(select);
+		if(this.state.calChanged){
+			const changed = new Promise((resolve,reject) => {
+				resolve(this.props.onSearchChange(false, val, ''));
+			});
+			changed.then(value => this.props.onSearchChange(true, val, this.state.countryCode));
+		}else{
+			this.props.onSearchChange(true, val, this.state.countryCode);
+			this.setState({calChanged:true});
+		}
   	}
 
 	removeCities = (select) => {
-		for(let i=1;i<select.childElementCount;i++){
-			select.children[i].remove();
+		console.log('starting remove cities, children:',select.childElementCount);
+		const run = select.childElementCount;
+		for(let i=0; i<run;i++){
+			select.children[0].remove();
 		}
+		return true;
 	}
 	
 	componentDidMount() {
@@ -88,13 +97,14 @@ class SearchBar extends React.Component {
 		return (
 			<div className='pa5' style={{paddingRight:'6rem', paddingLeft:'5rem'}}>
 				<h1> Where are you traveling to?</h1>
-				<div className='br3 pa5 ma3 ml5 mr5 shadow-5' style={{display:'flex', justifyContent:'center', flexWrap: 'wrap', backgroundColor:'#24478f'}}>
+				<div id='bar' className='br3 pa5 ma3 ml5 mr5 shadow-5' style={{display:'flex', justifyContent:'center', flexWrap: 'wrap'}}>
 					<div>
 					<CountryDropdown
 					className='pa3 ba br3 b--blue bg-lightest-blue ma2 mw5'
 			          value={country}
 			          onChange={(val) => this.onCountryChange(val)}
-			          whitelist={supportedCountryCode}/>
+			          whitelist={supportedCountryCode}
+			          />
 			         </div>
 					<div id='cities'>
 						<select id='citySelector' className='pa3 ba br3 b--blue bg-lightest-blue ma2 mw5' onChange={this.onCityChange}>

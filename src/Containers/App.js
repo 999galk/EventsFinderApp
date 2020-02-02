@@ -34,6 +34,7 @@ class App extends React.Component{
 
   onSearchChange = (calChanged, city, countryCode) => {
     this.setState({calChanged : calChanged, city : city, countryCode : countryCode});
+    return true;
   }
 
   onBackButtonEvent = (event) => {

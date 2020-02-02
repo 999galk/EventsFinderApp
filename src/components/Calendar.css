@@ -25,5 +25,10 @@
   background-color: black;
 }
 .rbc-calendar{
-  z-index:99;
+  padding:15px;
+  border : solid #3174ad;
+  border-radius: 1.5rem;
+}
+#calendar{
+  background-color: #F1F2F7;
 }
