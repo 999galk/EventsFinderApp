@@ -1,4 +1,5 @@
 import React from 'react';
+import googleSignin from './googleSignin.png';
 
 class Register extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class Register extends React.Component {
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-              <legend className="f1 fw6 ph0 mh0">Register</legend>
+              <legend className="f1 fw6 ph0 mh0">Sign Up</legend>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                 <input
@@ -103,18 +104,13 @@ class Register extends React.Component {
               <input
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
-                value="Register"
+                value="Sign Up"
                 onClick={this.onSubmitRegister}
               />
               <div className="pa3">
-              <p className="b ma0">OR</p>
-              <input
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mt2"
-                type="button"
-                value="Register with Google"
-                onClick={this.onGoogleRegister}
-              />
-              </div>
+            <p className="b ma0">OR</p>
+              <img alt='googlesignin' src={googleSignin} style={{width:'50%'}} onClick={this.onGoogleClick} className="grow pointer mt3"/>
+            </div>
             </div>
           </div>
         </main>

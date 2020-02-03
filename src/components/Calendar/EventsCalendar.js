@@ -41,7 +41,7 @@ class EventsCalendar extends React.Component{
 	        if (user === this.props.userId) {
 	        	msg.textContent = "Event saved to your calendar!";
 	        } else{
-	        	msg.textContent = "*Sign in with Google to unlock this option";
+	        	msg.textContent = "Sign in with Google to unlock this option";
 	        }
 	        btnDiv.appendChild(msg);
 	      })
@@ -124,7 +124,7 @@ class EventsCalendar extends React.Component{
 		return(
 			<div id='calendar' className='pa2 ma2 shadow-5'>
 				<h1>
-					{`Upcoming Events for ${this.props.city}, ${this.props.countryCode}:`}
+					{`Upcoming Events For ${this.props.city}, ${this.props.countryCode}:`}
 				</h1>
 			    <Calendar
 			      localizer={localizer}
@@ -134,7 +134,7 @@ class EventsCalendar extends React.Component{
 			      style={{height: 500}}
 			    />
 			    <div style={{display:'flex', justifyContent:'center'}}>
-		  		<EventDetails eventImg={eventImg} eventLink={eventLink} eventTitle={eventTitle} eventClicked={eventClicked} SaveSearch={this.SaveSearch} isSignedIn={isSignedIn}/>
+		  		<EventDetails eventImg={eventImg} eventLink={eventLink} eventTitle={eventTitle} eventClicked={eventClicked} SaveSearch={this.SaveSearch} isSignedIn={isSignedIn} onRouteChange={this.props.onRouteChange}/>
 		  		</div>
 			</div> 
 		);

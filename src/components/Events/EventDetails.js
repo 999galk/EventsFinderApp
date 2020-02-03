@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EventDetails = ({ eventImg, eventLink, eventTitle, eventClicked, SaveSearch, isSignedIn}) => {
+const EventDetails = ({ eventImg, eventLink, eventTitle, eventClicked, SaveSearch, isSignedIn, onRouteChange}) => {
 	return(
 		<div id='details' className='tc dib br3 pa2 ma4 bw2 mw5 mw7-ns' style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
 			<div id='eventDetails' className='center pa3 ph5-ns'>
@@ -10,10 +10,10 @@ const EventDetails = ({ eventImg, eventLink, eventTitle, eventClicked, SaveSearc
 			{
 				(isSignedIn && eventClicked)
 				?<div id='buttonDiv' className='mt3'>
-					<button className='mt1 white b pv2 ph3 bg-gray bn br-pill pointer' onClick={SaveSearch} title="Add this event to my Google Calendar">+ Google Calendar</button>
+					<img className='pointer' onClick={SaveSearch} title="Add this event to my Google Calendar" alt="googleCal" src="https://d14f1v6bh52agh.cloudfront.net/oS578Mo8psy93c5uRIvpia1L5EU=/fit-in/1400xorig/uploads/zn6V8AMIh9RbHP5oxNmcUsbHRbR2W4NUSuuC28wr.jpeg" style={{width:'150px'}}/>
 				</div>
 				: ( eventClicked
-					? <div>*Sign in to add events to your Google Calendar!</div>
+					? <div onClick={() => onRouteChange('/signin')} className='pointer mt2 grow'>Sign in to add events to your Google Calendar</div>
 					:<div></div>
 				)
 			}

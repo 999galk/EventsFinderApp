@@ -26,6 +26,8 @@
 }
 .rbc-calendar{
   padding:15px;
+  margin-left:7%;
+  margin-right:7%;
   border : solid #3174ad;
   border-radius: 1.5rem;
 }

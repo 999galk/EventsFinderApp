@@ -62,7 +62,7 @@ class App extends React.Component{
           <Header onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} userId={userId} onSearchChange={this.onSearchChange} calChanged={calChanged}/>
           {
             calChanged
-            ?<EventsCalendar city={city} countryCode={countryCode} isSignedIn={isSignedIn} userId={userId} onBackButtonEvent={this.onBackButtonEvent} calChanged={calChanged}/> 
+            ?<EventsCalendar city={city} countryCode={countryCode} isSignedIn={isSignedIn} userId={userId} onBackButtonEvent={this.onBackButtonEvent} calChanged={calChanged} onRouteChange={this.onRouteChange}/> 
             :<Recomendations onSearchChange={this.onSearchChange}/> 
           }
           </div>

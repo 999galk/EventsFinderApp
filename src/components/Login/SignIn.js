@@ -1,4 +1,5 @@
 import React from 'react';
+import googleSignin from './googleSignin.png';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -99,12 +100,7 @@ class SignIn extends React.Component {
             </div>
             <div className="pa3">
             <p className="b ma0">OR</p>
-              <input
-                onClick={this.onGoogleClick}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mt2"
-                type="button"
-                value="Sign in with Google"
-              />
+              <img alt='googlesignin' src={googleSignin} style={{width:'50%'}} onClick={this.onGoogleClick} className="grow pointer mt3"/>
             </div>
             <div className="lh-copy mt2">
               <h4 className='mb1'> Don't have an account yet?</h4>
